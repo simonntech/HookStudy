@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 
 export default function App() {
+  //UseState
   const [count, setCount] = useState(0)
+
+  //UseEffect - controla efeito colateral - monitora a variável, se não tiver variável, é mudança na tela
+  useEffect(() => {
+    if (count === 0) {
+      Alert.alert("Carrinho", "Carrinho vazio")
+    }
+  }, [count]);
+
 
   const incrementCount = () => {
     setCount((prevState) => prevState + 1)
   }
 
   const decrementCount = () => {
-    if(count > 0 ) {
+    if (count > 0) {
       setCount((prevState) => prevState - 1)
     }
   }
