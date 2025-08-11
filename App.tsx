@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function App() {
+  const [count, setCount] = useState(0)
+
+  const incrementCount = () => {
+    setCount((prevState) => prevState + 1)
+  }
+
+  const decrementCount = () => {
+    setCount((prevState) => prevState - 1)
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.big}>0</Text>
+      <Text style={styles.big}>{count}</Text>
 
       <View style={styles.inline}>
-        <Button title='Remover'></Button>
-        <Button title='Adicionar'></Button>
+        <Button title='Remover' onPress={decrementCount}></Button>
+        <Button title='Adicionar' onPress={incrementCount}></Button>
       </View>
-      
+
     </View>
   );
 }
